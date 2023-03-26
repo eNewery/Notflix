@@ -1,15 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './App.css';
 import {useMoviesContext} from "./components/MoviesState"
-import MoviesState from './components/MoviesState';
-import MoviesContainer from './components/MoviesContainer';
+import LandingPage from './components/LandingPage';
 function App() {
 
 const context = useMoviesContext();
 
   return (
 <div>
-  <MoviesContainer/>
+  <LandingPage/>
+  {/* <MoviesContainer/> */}
 </div>
   );
 }

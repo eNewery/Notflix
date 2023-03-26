@@ -11,11 +11,17 @@ export default function MoviesContainer(){
     }
     console.log(context.data.results)
     return <div>
-        <div className="movieCardContainer">
-        {context.data.results ? context.data.results.map(item => <MovieCard data={item}/>) : <p>Las peliculas no han sido cargadas correctamente</p>}
-        </div>
-<button onClick={previousPage}>Previous Page</button>
 
-<button onClick={nextPage}>Next Page</button>
+ <div className="movieCardContainer">
+    {
+       context.search.length === 0 ? context.data.results ? context.data.results.map(item => <MovieCard data={item}/>) : <p>Las peliculas no han sido cargadas correctamente</p>
+        : console.log("putoelqlee")
+    }
+        </div>
+        {context.search.length === 0 ?  <div class="pagination">
+    <button onClick={previousPage} class="prev-button">Anterior</button>
+    <button onClick={nextPage} class="next-button">Siguiente</button>
+  </div> : console.log("Putoelqlee")}
+       
     </div>
 }

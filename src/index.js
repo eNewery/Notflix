@@ -1,15 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import App from './App';
+import Header from './components/Header';
 import reportWebVitals from './reportWebVitals';
 import MoviesState from './components/MoviesState';
+import MoviesContainer from './components/MoviesContainer';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      <MoviesState>
-    <App />
+  <BrowserRouter>
+   <MoviesState>
+<Header/>
+<Routes>
+<Route index element={<App />}/>
+<Route path="/Movies" element={<MoviesContainer />}/>
+
+  </Routes>  
 </MoviesState>
+  </BrowserRouter>  
   </React.StrictMode>
 
 

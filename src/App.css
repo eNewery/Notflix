@@ -20,7 +20,7 @@ place-items: center;
   transition: 0.3s;
 }
 .movieImageSlider:hover{
-  width: 450px;
+  width: 300px;
   transition: 0.3s;
 }
 /* MOVIE CARD */
@@ -196,9 +196,6 @@ height: 15vh;
   align-items: center;
   cursor: pointer;
 }
-.activa{
-
-}
 .headerLogo img{
   width: 128px;
 }
@@ -217,6 +214,9 @@ nav button{
   border: none;
   cursor: pointer;
   font-weight: 800;
+}
+.navLink{
+  color: #0062cc;
 }
 /* HEADER */
 
@@ -248,7 +248,7 @@ nav button{
 
 
 button[type="submit"] {
-  background-color: #007bff;
+  background-color: #1e274b;
   color: #fff;
   padding: 10px;
   border: none;
@@ -259,7 +259,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #0062cc;
+  background-color: #00162e;
 }
 
 button[type="submit"]:active {
@@ -301,17 +301,14 @@ button[type="submit"]:active {
   background-color: #0d253f;
 }
 
-/* Fondo de la barra de scroll */
 ::-webkit-scrollbar-track {
   background: #000000;
 }
 
-/* Barra de desplazamiento */
 ::-webkit-scrollbar-thumb {
   background: #0d253f;
 }
 
-/* Barra de desplazamiento al pasar el cursor encima */
 ::-webkit-scrollbar-thumb:hover {
   background: #1a4b80;
 }
@@ -323,3 +320,73 @@ background-color: #007bff;
 padding: 0.5em;
 }
 /* LANDING */
+
+/* DETAIL */
+.movie-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #00162e;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 67, 122, 0.2);
+  color: white;
+}
+
+.movie-poster {
+  flex-shrink: 0;
+  margin-right: 40px;
+}
+
+.movie-poster img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.movie-info {
+  flex-grow: 1;
+}
+
+.movie-title {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.movie-tagline {
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.movie-genres {
+  margin-bottom: 20px;
+}
+
+.movie-metadata {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movie-metadata p {
+  margin-right: 30px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.movie-metadata p:last-child {
+  margin-right: 0;
+}
+
+.movie-metadata strong {
+  font-weight: bold;
+}
+
+.movie-overview {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+/* DETAIL */

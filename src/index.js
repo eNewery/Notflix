@@ -7,6 +7,7 @@ import Header from './components/Header';
 import reportWebVitals from './reportWebVitals';
 import MoviesState from './components/MoviesState';
 import MoviesContainer from './components/MoviesContainer';
+import MovieDetail from './components/MovieDetail';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -16,7 +17,7 @@ root.render(
 <Routes>
 <Route index element={<App />}/>
 <Route path="/Movies" element={<MoviesContainer />}/>
-
+<Route path='/Movies/:id' element={<MovieDetail/>}/>
   </Routes>  
 </MoviesState>
   </BrowserRouter>  

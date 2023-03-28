@@ -1,6 +1,6 @@
 import MovieCard from "./MovieCard";
 import { useMoviesContext } from "./MoviesState"
-
+import SearchBar from "./SearchBar";
 export default function MoviesContainer(){
     const context = useMoviesContext();
     function previousPage(){
@@ -11,7 +11,7 @@ export default function MoviesContainer(){
     }
     console.log(context.data.results)
     return <div>
-
+<SearchBar/>
  <div className="movieCardContainer">
     {
        context.search.length === 0 ? context.data.results ? context.data.results.map(item => <MovieCard data={item}/>) : <p>Las peliculas no han sido cargadas correctamente</p>

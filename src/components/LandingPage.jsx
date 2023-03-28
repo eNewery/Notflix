@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import CategoryItem from "./CategoryItem";
 import { useMoviesContext } from "./MoviesState"
 
 export default function LandingPage(){
@@ -17,7 +18,12 @@ export default function LandingPage(){
         </form>
       </div>
     </section>
-  
+    <h2 className="title">Categorías populares</h2>
+    <section class="categories">
+      <div class="category-buttons">
+    {context.categories.genres ? context.categories.genres.map(item => (<CategoryItem item={item}/>)) : console.log("Las categorias no se han cargado correctamente")}
+      </div>
+    </section>
       <h2 className="title">Películas destacadas</h2>
     <section class="featured">
       <div class="movie-cards">
@@ -33,12 +39,7 @@ export default function LandingPage(){
       </div>
     </section>
   
-      <h2 className="title">Categorías populares</h2>
-    <section class="categories">
-      <div class="category-buttons">
-    
-      </div>
-    </section>
+
   
     <section class="newsletter">
       <h2 className="title">¡Suscríbete a nuestro boletín!</h2>

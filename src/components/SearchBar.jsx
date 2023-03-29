@@ -31,7 +31,7 @@ function searchMovies(query) {
   </form>
         </div>
   <div className="search-results">
-{context.search.length ? context.search.map(item => <SearchItem data={item}/>) : console.log("putoelqlee")}
+{context.search.length ? context.search.map(item => <SearchItem data={item}/>) : console.log("No hay nada en la barra de búsqueda ")}
   </div>
     </div> 
   

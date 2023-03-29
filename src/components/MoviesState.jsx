@@ -7,9 +7,24 @@ export default function MoviesState({children}){
     const [data, setData] = useState([])
     const [search, setSearch] = useState([]);
     const [categories, setCategories] = useState([])
+    let [favouriteData, setFavouriteData] = useState()
 
 const [count, setCount] = useState(1)
+useEffect(() => {
+const keys = Object.keys(localStorage);
 
+const parsedData = {};
+
+keys.forEach((key) => {
+  try {
+    parsedData[key] = JSON.parse(localStorage.getItem(key));
+  } catch (e) {
+    
+  }
+});
+
+setFavouriteData([parsedData]);
+}, [])
 
 
 useEffect(() => {
@@ -21,7 +36,7 @@ fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=d7214adc4b19c9daf7f
       .then(res=>res.json())
       .then(json=>setData(json))
   }, [count])
-return <MoviesContext.Provider value={{data, count, setCount, search, setSearch, categories}}>
+return <MoviesContext.Provider value={{data, count, setCount, search, setSearch, categories, setFavouriteData, favouriteData}}>
     {children}
 </MoviesContext.Provider>
 }

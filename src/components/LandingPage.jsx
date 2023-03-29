@@ -10,7 +10,7 @@ export default function LandingPage(){
 
     <section class="hero">
       <div class="hero-content">
-        <h1>Bienvenido a Notflix</h1>
+        <h1>Bienvenido a <span className="notflixTitle">Notflix</span></h1>
         <p>Encuentra tus películas favoritas aquí</p>
         <form className="formLanding">
           <input className="inputSearch" type="text" placeholder="Buscar películas..."/>

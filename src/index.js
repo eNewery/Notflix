@@ -8,6 +8,9 @@ import reportWebVitals from './reportWebVitals';
 import MoviesState from './components/MoviesState';
 import MoviesContainer from './components/MoviesContainer';
 import MovieDetail from './components/MovieDetail';
+import CategoryContainer from './components/CategoryContainer';
+import Favourites from './components/Favourites';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -18,6 +21,8 @@ root.render(
 <Route index element={<App />}/>
 <Route path="/Movies" element={<MoviesContainer />}/>
 <Route path='/Movies/:id' element={<MovieDetail/>}/>
+<Route path='/Category/:name' element={<CategoryContainer/>}/>
+<Route path='/Favourites' element={<Favourites/>}/>
   </Routes>  
 </MoviesState>
   </BrowserRouter>  

@@ -35,7 +35,17 @@ place-items: center;
   background-color: rgb(240, 240, 240);
   transition: transform 0.3s ease-in-out;
 }
+.titleFavorites{
+  display: flex;
+}
+.favOff{
+  position: absolute;
+  right: 1em;
+  cursor: pointer;
+top: 1em;
 
+max-width: 24px;
+}
 .movie-card:hover {
   transform: translateY(-5px);
 }
@@ -239,16 +249,21 @@ nav button{
   font-size: 48px;
   margin-bottom: 16px;
 }
-
+.hero .notflixTitle{
+  color: #336DFF;
+}
 .hero p {
   font-size: 24px;
   margin-bottom: 32px;
+}
+.inputSearch{
+  width: 650px;
 }
 
 
 
 button[type="submit"] {
-  background-color: #1e274b;
+  background-color: #3e4f96;
   color: #fff;
   padding: 10px;
   border: none;

@@ -10,7 +10,7 @@ export default function MovieCard({data}){
 
 useEffect(() => {
 const filtered = JSON.parse(localStorage.getItem(data.id));
-filtered ? setFavourite(filtered.favourite) : console.log("No hay objetos filtrados")
+filtered ? setFavourite(filtered.favourite) : console.log("No existe")
 
 }, [])
   function setOnFavourite(){
@@ -19,7 +19,7 @@ const obj = {
   favourite: true,
   data: data
 }
-context.favouriteData.length === 0 ? context.setFavouriteData([data]) : context.setFavouriteData([...context.favouriteData, data]);
+context.favouriteData.length === 0 ? context.setFavouriteData([obj]) : context.setFavouriteData([...context.favouriteData, obj]);
 const temp = JSON.stringify(obj)
 localStorage.setItem(data.id, temp)
 }

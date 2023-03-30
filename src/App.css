@@ -422,3 +422,57 @@ padding: 0.5em;
   margin-bottom: 30px;
 }
 /* DETAIL */
+.item-container {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.poster {
+  width: 150px;
+  height: 225px;
+  margin-right: 20px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.tagline {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  font-style: italic;
+  color: #555;
+}
+
+.release-date {
+  margin: 0 0 10px 0;
+  color: #777;
+}
+
+.rating {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #4caf50;
+}
+
+.overview {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+}

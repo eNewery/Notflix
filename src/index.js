@@ -7,7 +7,6 @@ import Header from './components/Header';
 import reportWebVitals from './reportWebVitals';
 import MoviesState from './components/MoviesState';
 import MoviesContainer from './components/MoviesContainer';
-import MovieDetail from './components/MovieDetail';
 import CategoryContainer from './components/CategoryContainer';
 import Favourites from './components/Favourites';
 
@@ -20,7 +19,6 @@ root.render(
 <Routes>
 <Route index element={<App />}/>
 <Route path="/Movies" element={<MoviesContainer />}/>
-<Route path='/Movies/:id' element={<MovieDetail/>}/>
 <Route path='/Category/:name' element={<CategoryContainer/>}/>
 <Route path='/Favourites' element={<Favourites/>}/>
   </Routes>  

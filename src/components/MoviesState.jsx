@@ -4,36 +4,24 @@ import { createContext } from "react";
 
 const MoviesContext = createContext();
 export default function MoviesState({children}){
+    const [showModal, setShowModal] = useState(false);
+const [modalData, setModalData] = useState([]);
     const [data, setData] = useState([])
     const [search, setSearch] = useState([]);
     const [categories, setCategories] = useState([])
-    let [favouriteData, setFavouriteData] = useState([])
-
+    const [datosFav, setDatosFav] = useState([])
 const [count, setCount] = useState(1)
-function initializeFavorites() {
-    // Obtener las claves del localStorage
-    const keys = Object.keys(localStorage);
+
+const getFavouritesFromLocalStorage = () => {
+    const keys = Object.keys(localStorage).filter(key => !isNaN(key)); // obtiene las keys que son números (id de película)
+    const favourites = keys.map(key => JSON.parse(localStorage.getItem(key))); // obtiene los valores correspondientes a cada key
+    setDatosFav(...datosFav, favourites); // asigna los valores a favouriteData
+  };
   
-    // Verificar si hay alguna clave con un objeto no vacío
-    const hasNonEmptyObject = keys.some((key) => {
-      const value = localStorage.getItem(key);
-      return value && value !== "null" && value !== "undefined" && JSON.parse(value) !== null;
-    });
-  
-    // Si hay al menos un objeto no vacío, entonces inicializar los estados favoritos
-    if (hasNonEmptyObject) {
-      keys.forEach((key) => {
-        const value = localStorage.getItem(key);
-        if (value && value !== "null" && value !== "undefined") {
-          const parsedValue = JSON.parse(value);
-          setFavouriteData([parsedValue]);
-        }
-      });
-    }
-  }
+
   useEffect(() => {
-      initializeFavorites()
-}, [])
+      getFavouritesFromLocalStorage()
+  }, []);
 
 useEffect(() => {
 fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=d7214adc4b19c9daf7f6294b411d236d&language=en-US").then(res => res.json()).then(json => setCategories(json))
@@ -45,7 +33,7 @@ fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=d7214adc4b19c9daf7f
       .then(json=>setData(json))
 
   }, [count])
-return <MoviesContext.Provider value={{data, count, setCount, search, setSearch, categories, setFavouriteData, favouriteData}}>
+return <MoviesContext.Provider value={{data, count, setCount, search, setSearch, categories, datosFav, setDatosFav, showModal, setShowModal, modalData, setModalData}}>
     {children}
 </MoviesContext.Provider>
 }

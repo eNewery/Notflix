@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import favOff from "./images/favoff.png"
 import favOn from "./images/favon.png"
 import { useMoviesContext } from "./MoviesState";
-
+import Modal from "./Modal";
 export default function MovieCard({data}){
   let [favourite, setFavourite] = useState(false);
   const context = useMoviesContext();
@@ -19,17 +19,23 @@ const obj = {
   favourite: true,
   data: data
 }
-context.favouriteData.length === 0 ? context.setFavouriteData([obj]) : context.setFavouriteData([...context.favouriteData, obj]);
+context.datosFav.length === 0 ? context.setDatosFav([obj]) : context.setDatosFav([...context.datosFav, obj]);
 const temp = JSON.stringify(obj)
 localStorage.setItem(data.id, temp)
 }
 
   function setOffFavourite(){
     setFavourite(false)
-    const filtered = context.favouriteData.filter(item => item.id !== data.id); 
-    context.setFavouriteData(filtered)
+    
     localStorage.removeItem(data.id)
+    const filtered = context.datosFav.filter(item => item.data.id !== data.id);
+    context.setDatosFav(filtered)
   }
+
+function handleShow(){
+  context.setShowModal(true); 
+  context.setModalData([data]);
+}
     return <div className="movie-card">
       <div>
         <img className="movieImage" src={`https://image.tmdb.org/t/p/w300${data.poster_path}`} alt="" />
@@ -41,10 +47,10 @@ favourite === false ? <img onClick={() => setOnFavourite()} className="favOff" s
         <div className="titleFavorites">
     <h2>{data.title} </h2>
         </div>
-    <Link to={`/Movies/${data.id}`}>
-    <button>
-    Ver más
-    </button>
-    </Link>
+    <div>
+      <button onClick={handleShow}>Ver más</button>
+
+    </div>
+    
   </div>
 }

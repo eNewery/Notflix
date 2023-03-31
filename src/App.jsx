@@ -9,6 +9,7 @@ const context = useMoviesContext();
   return (
 <div>
   <LandingPage/>
+  
   {/* <MoviesContainer/> */}
 </div>
   );

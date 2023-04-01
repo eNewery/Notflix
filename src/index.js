@@ -9,6 +9,7 @@ import MoviesState from './components/MoviesState';
 import MoviesContainer from './components/MoviesContainer';
 import CategoryContainer from './components/CategoryContainer';
 import Favourites from './components/Favourites';
+import Footer from './components/Footer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +23,7 @@ root.render(
 <Route path='/Category/:name' element={<CategoryContainer/>}/>
 <Route path='/Favourites' element={<Favourites/>}/>
   </Routes>  
+  <Footer/>
 </MoviesState>
   </BrowserRouter>  
   </React.StrictMode>

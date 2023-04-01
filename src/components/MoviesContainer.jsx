@@ -19,7 +19,6 @@ export default function MoviesContainer(){
     return <div>
 <SearchBar/>
 <Modal className="modalContainer" show={context.showModal} handleClose={handleClose}>
-        <h2>{context.modalData.map(item => item.title)}</h2>
       </Modal>
  <div className="movieCardContainer">
 

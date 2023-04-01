@@ -7,30 +7,29 @@ import favOff from "./images/favoff.png"
 export default function ModalContent({data}){
     const context = useMoviesContext();
 const [favourite, setFavourite] = useState(false)
-    useEffect(() => {
-    const filtered = JSON.parse(localStorage.getItem(data.id));
-    filtered ? setFavourite(filtered.favourite) : console.log("No existe")
-    
-    }, [])
-      function setOnFavourite(){
-    setFavourite(true)
-    const obj = {
-      favourite: true,
-      data: data
-    }
-    context.datosFav.length === 0 ? context.setDatosFav([obj]) : context.setDatosFav([...context.datosFav, obj]);
-    const temp = JSON.stringify(obj)
-    localStorage.setItem(data.id, temp)
-    }
-    
-      function setOffFavourite(){
-        setFavourite(false)
-        
-        localStorage.removeItem(data.id)
-        const filtered = context.datosFav.filter(item => item.data.id !== data.id);
-        context.setDatosFav(filtered)
-      }
-    
+const [genre, setGenre] = useState();
+
+
+useEffect(() => {
+    const apiKey = 'd7214adc4b19c9daf7f6294b411d236d'; // Cambia esto con tu propia clave de API
+const language = 'es-ES'; // Cambia esto con el idioma en el que deseas recibir la información
+const genreIds = data.genre_ids; // Cambia esto con el nombre de la propiedad que contiene los IDs de género en el objeto que recibes como prop
+
+    fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=${language}&with_genres=${genreIds}`)
+    .then(response => response.json())
+    .then(data => {
+      // Filtrar la lista de géneros para obtener solo los géneros de la película específica
+    const movieGenres = data.genres.filter(genre => genreIds.includes(genre.id));
+
+    // Obtener los nombres de los géneros de la película específica
+    const genreNames = movieGenres.map(genre => genre.name);
+    setGenre(genreNames)
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}, [data])
+
 const background = {
     background1: {
     background: `url(https://image.tmdb.org/t/p/w300${data.poster_path})`,
@@ -43,12 +42,11 @@ const background = {
 return <section style={background.background1} class="movie-details">
 
 <div class="movie-info">
-    <p class="movie-tagline">{data.tagline} {
-favourite === false ? <img onClick={() => setOnFavourite()} className="favOff" src={favOff} alt="" /> : <img onClick={() => setOffFavourite()} className="favOff" src={favOn} alt="" />
-} </p>
+    <p class="movie-tagline">{data.tagline} </p>
+<h1>{data.title}</h1>
     <p class="movie-genres">
         <strong>Genres:</strong>
-  {data.genres ? data.genres.map(genre => (<Link to={`/Category/${genre.id}`}><p>{genre.name}</p></Link>)) : <p>Sin géneros</p>}
+  {genre ? genre.map(item => (<span>{item}</span>)) : <p>Sin géneros</p>}
     </p>
     <p class="movie-overview">{data.overview}</p>
     <div class="movie-metadata">

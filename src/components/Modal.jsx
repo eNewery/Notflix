@@ -6,6 +6,7 @@ const Modal = ({ handleClose, show, children }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
 const context = useMoviesContext();
 
+
 console.log(context.modalData)
   return (
     <div className={showHideClassName}>

@@ -7,10 +7,10 @@ import Modal from "./Modal";
 export default function MovieCard({data}){
   let [favourite, setFavourite] = useState(false);
   const context = useMoviesContext();
-
-useEffect(() => {
-const filtered = JSON.parse(localStorage.getItem(data.id));
-filtered ? setFavourite(filtered.favourite) : console.log("No existe")
+  const movieCard = document.querySelector(".movie-card");
+  useEffect(() => {
+    const filtered = JSON.parse(localStorage.getItem(data.id));
+    filtered ? setFavourite(filtered.favourite) : console.log("No existe")
 
 }, [])
   function setOnFavourite(){
@@ -32,10 +32,11 @@ localStorage.setItem(data.id, temp)
     context.setDatosFav(filtered)
   }
 
-function handleShow(){
-  context.setShowModal(true); 
-  context.setModalData([data]);
-}
+  function handleShow(){
+    context.setShowModal(true); 
+    context.setModalData([data]);
+  }
+
     return <div className="movie-card">
       <div>
         <img className="movieImage" src={`https://image.tmdb.org/t/p/w300${data.poster_path}`} alt="" />

@@ -1,17 +1,18 @@
 *{
   text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
 }
 html, body{
   overflow-x: hidden;
-  background: rgb(2,0,36);
-  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgb(6 26 108) 42%);
+  background: rgb(24, 24, 24);
 }
 .movieCardContainer{
 display: grid;
-grid-template-columns: repeat(4, 1fr);
+grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+flex-wrap: wrap;
 gap: 1em;
-grid-template-rows: 1fr 1fr;
 place-items: center;
+margin-top: 1em;
 }
 
 .movieImage{
@@ -109,6 +110,11 @@ max-width: 24px;
   background-color: #2ecc71;
 }
 
+.landingSectionsContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+}
 /* NEXT PREVIOUS BTN */
 
 /* SEARCH BAR */
@@ -120,11 +126,13 @@ max-width: 24px;
 }
 
 .searchBar{
-padding: 10px;
+padding: 0;
 border: none;
 border-radius: 5px 0 0 5px;
 width: 500px;
 font-size: 16px;
+height: 100%;
+text-align: center;
 }
 .formLanding{
 display: flex;
@@ -198,9 +206,13 @@ place-items: center;
   display: flex;
 justify-content: space-between;
 align-items: center;
-background-color: #000000;
+background-color: #ffffff;
 margin-bottom: 1em;
 height: 15vh;
+padding: 0.3em;
+border-bottom-left-radius:1em;
+border-bottom-right-radius:1em ;
+
 }
 .headerLogo{
   display: flex;
@@ -218,7 +230,8 @@ height: 15vh;
   width: 128px;
 }
 .headerLogo h1{
-  color: #336DFF;
+  font-family: 'Montserrat', sans-serif;
+  color: black;
 }
 nav{
   display: flex;
@@ -234,15 +247,16 @@ nav button{
   font-weight: 800;
 }
 .navLink{
-  color: #ffffff;
+
   margin: 1em;
   padding: 1em;
   border-radius: 1em;
-box-shadow:0em -1em 0em 0.1em #051424;
-transition:0.5s;
+  transition:0.5s;
+  font-weight: 700;
+  box-shadow: 0em 0.3em 0em 0.1em #a1a1a1;
 }
 .navLink:hover{
-box-shadow: 0em 0.3em 0em 0.1em #516b86;
+  box-shadow:0em -0.3em 0em 0.1em #051424;
 transform: translateY(-0.3em);
 transition: 0.5s;
 }
@@ -284,7 +298,7 @@ transition: 0.5s;
 
 
 button[type="submit"] {
-  background-color: #3e4f96;
+  background-color: #336DFF;
   color: #fff;
   padding: 10px;
   border: none;
@@ -310,7 +324,7 @@ button[type="submit"]:active {
 
 .featured h2, .popular h2, .categories h2, .newsletter h2 {
   font-size: 36px;
-  margin-bottom: 32px;
+  margin: 0;
   color: white;
 }
 .category-buttons{
@@ -331,16 +345,21 @@ text-align: center;
 
 .newsletter{
   display: flex;
-  justify-content: center;
-  flex-direction: column-reverse;
-  justify-content: center;
+  justify-content: start;
+  flex-direction: column;
   align-items: center;
+  gap: 1em;
+  width: 100%;
+  margin-bottom: 3em;
 }
 .newsletter form{
   display: flex;
+  justify-content: center;
+  width: 100%;
 }
 .newsletter input{
-  width: 300px;
+  display: flex;
+  width: 22.5%;
 }
 .movie-cards {
   display: flex
@@ -576,10 +595,68 @@ display: block;
 
 
 .footerContainer{
-  background-color: black;
+  background-color: white;
   height: 156px;
-  color: white;
+  color: black;
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+  height: 100%;
+  background-color: #336DFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+width: 40px;
+color: white;
+cursor: pointer;
+}
+.searchForm{
+  height: 40px;
+  display: flex;
+}
+#search-button{
+  height: 100%;
+}
+.filterActivated{
+  display: flex;
+justify-content: center;
+  width: 100%;
+  height: 0px;
+  z-index: 10;
+  animation: filterActivated 0.5s both;
+}
+.filterActivatedd{
+  width: 40%;
+  border-radius: 1em;
+  display: flex;
+  background-color: #00162e;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+@keyframes filterActivated {
+  0%{opacity: 0;}
+  100%{height: 100px; opacity: 1;}
+}
+.filterDeactivated{
+  height: 0px;
+background-color: #00162e;
+z-index: 10;
+animation: filterDeactivated 0.5s both;
+
+}
+.displayNone{
+  display: none;
+}
+@keyframes filterDeactivated {
+  0%{height: 100px; opacity: 0;}
+  100%{display: none; opacity: 0;}
 }

@@ -18,21 +18,23 @@ export default function LandingPage(){
         </form>
       </div>
     </section>
-    <h2 className="title">Categorías populares</h2>
+    <div className="landingSectionsContainer">
+
     <section class="categories">
+    <h2 className="title">Categorías populares</h2>
       <div class="category-buttons">
     {context.categories.genres ? context.categories.genres.map(item => (<CategoryItem item={item}/>)) : console.log("Las categorias no se han cargado correctamente")}
       </div>
     </section>
-      <h2 className="title">Películas destacadas</h2>
     <section class="featured">
+      <h2 className="title">Películas destacadas</h2>
       <div class="movie-cards">
       {context.data.results ? context.data.results.map(item => <Link to={`Movies/${item.id}`}><img className="movieImage movieImageSlider" src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt="" /> </Link>) : <p>Las peliculas no han sido cargadas correctamente</p>}
       </div>
     </section>
   
-      <h2 className="title">Películas populares</h2>
     <section class="popular">
+      <h2 className="title">Películas populares</h2>
       <div class="movie-cards">
       {context.data.results ? context.data.results.map(item => <Link to={`Movies/${item.id}`}><img className="movieImage movieImageSlider" src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt="" /> </Link>) : <p>Las peliculas no han sido cargadas correctamente</p>}
 
@@ -48,10 +50,7 @@ export default function LandingPage(){
         <button type="submit">Suscribirme</button>
       </form>
     </section>
+    </div>
   
-    <section class="footer">
-      <p>Todos los derechos reservados a Ulises Rodriguez © 2023 Página de películas</p>
-      
-    </section>
     </div>  
 }

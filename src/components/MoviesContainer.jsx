@@ -6,7 +6,6 @@ import Modal from "./Modal";
 export default function MoviesContainer(){
     const context = useMoviesContext();
 
-    const handleClose = () => context.setShowModal(false);
 
     const handleShow = () => context.setShowModal(true);
   
@@ -18,15 +17,8 @@ export default function MoviesContainer(){
     }
     return <div>
 <SearchBar/>
-<Modal className="modalContainer" show={context.showModal} handleClose={handleClose}>
-      </Modal>
+
  <div className="movieCardContainer">
-
-
-  
-
-
-
     {
        context.search.length === 0 ? context.data.results ? context.data.results.map(item => <MovieCard key={item.id} data={item}/>) : <p>Las peliculas no han sido cargadas correctamente</p>
         : console.log("putoelqlee")

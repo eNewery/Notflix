@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import MovieCard from "./MovieCard";
 import { useMoviesContext } from "./MoviesState"
+import Modal from "./Modal";
 
 export default function CategoryContainer(){
     const [categoriesData, setCategoriesData] = useState([]);
@@ -10,6 +11,7 @@ export default function CategoryContainer(){
     const id = useParams()
     const context = useMoviesContext();
 
+    const handleClose = () => context.setShowModal(false);
 
     function previousPage(){
         count > 1 ? setCount(count - 1) : console.log("Count es 1")
@@ -22,6 +24,8 @@ fetch(`https://api.themoviedb.org/3/discover/movie?api_key=d7214adc4b19c9daf7f62
 }, [count])
 console.log(categoriesData)
     return <div className="movieCardContainer">
+      <Modal className="modalContainer" show={context.showModal} handleClose={handleClose}>
+      </Modal>
    {categoriesData.results ? categoriesData.results.map(item => <MovieCard data={item}/>) : console.log("No se han podido cargar las películas con esa categoría")}
    <div class="pagination">
     <button onClick={previousPage} class="prev-button">Anterior</button>

@@ -16,6 +16,7 @@ root.render(
   <React.StrictMode>
   <BrowserRouter>
    <MoviesState>
+    
 <Header/>
 <Routes>
 <Route index element={<App />}/>

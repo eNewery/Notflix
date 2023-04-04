@@ -5,14 +5,18 @@ import LandingPage from './components/LandingPage';
 import Modal from './components/Modal';
 function App() {
 
+const handleClose = () => context.setShowModal(false);
 const context = useMoviesContext();
 
 
   return (
-<div>
+  <div>
+    <Modal className="modalContainer" show={context.showModal} handleClose={handleClose}>
+      </Modal>
   <LandingPage/>
-  {/* <MoviesContainer/> */}
-</div>
+
+    </div>
+
   );
 }
 

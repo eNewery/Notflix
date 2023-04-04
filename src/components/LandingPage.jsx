@@ -4,7 +4,10 @@ import { useMoviesContext } from "./MoviesState"
 
 export default function LandingPage(){
     const context = useMoviesContext();
-
+    function handleShow(data){
+      context.setShowModal(true); 
+      context.setModalData([data]);
+    } 
 
     return <div>
 
@@ -29,14 +32,14 @@ export default function LandingPage(){
     <section class="featured">
       <h2 className="title">Películas destacadas</h2>
       <div class="movie-cards">
-      {context.data.results ? context.data.results.map(item => <Link to={`Movies/${item.id}`}><img className="movieImage movieImageSlider" src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt="" /> </Link>) : <p>Las peliculas no han sido cargadas correctamente</p>}
+      {context.data.results ? context.data.results.map(item => <button onClick={() => handleShow(item)} className="linkMovies"><img className="movieImage movieImageSlider" src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt="" /><h5 className="movieSliderTitle">{item.title}</h5></button>) : <p>Las peliculas no han sido cargadas correctamente</p>}
       </div>
     </section>
   
     <section class="popular">
       <h2 className="title">Películas populares</h2>
       <div class="movie-cards">
-      {context.data.results ? context.data.results.map(item => <Link to={`Movies/${item.id}`}><img className="movieImage movieImageSlider" src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt="" /> </Link>) : <p>Las peliculas no han sido cargadas correctamente</p>}
+      {context.data.results ? context.data.results.map(item => <button onClick={() => handleShow(item)} className="linkMovies"><img className="movieImage movieImageSlider" src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt="" /><h5 className="movieSliderTitle">{item.title}</h5></button>) : <p>Las peliculas no han sido cargadas correctamente</p>}
 
       </div>
     </section>

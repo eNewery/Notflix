@@ -8,7 +8,7 @@ html, body{
 }
 .movieCardContainer{
 display: grid;
-grid-template-columns:1fr 1fr 1fr 1fr;
+grid-template-columns:1fr 1fr 1fr 1fr 1fr;
 grid-template-rows: 1fr 0.5fr;
 flex-wrap: wrap;
 gap: 1em;
@@ -280,7 +280,7 @@ nav button{
   font-weight: 800;
 }
 .navLink{
-
+color: black;
   margin: 1em;
   padding: 1em;
   border-radius: 1em;
@@ -364,7 +364,7 @@ button[type="submit"]:active {
   overflow-x: scroll;
   overflow-y: hidden;
   color: #fff;
-  width: 200%;
+
 }
 
 .featured h2, .popular h2, .categories h2, .newsletter h2 {
@@ -372,7 +372,8 @@ button[type="submit"]:active {
   margin: 0;
   color: white;
   text-align: start;
-  width: 100%;
+  width: 30%;
+  border-top-right-radius: 1em;
 }
 .category-buttons{
   display: flex;
@@ -429,6 +430,7 @@ text-align: center;
 ::-webkit-scrollbar-thumb:hover {
   background: #1a4b80;
 }
+
 /* Barra de scroll */
 
 .title{

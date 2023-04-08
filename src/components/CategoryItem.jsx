@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
+import { useMoviesContext } from "./MoviesState";
 
 export default function CategoryItem({item}){
-    return <Link className="categoryItem" to={`/Category/${item.id}`}>{item.name}</Link>
+    const context = useMoviesContext();
+    return <Link className="categoryItem" onClick={() => context.setCategoryTitle(item.name)} to={`/Category/${item.id}`}>{item.name}</Link>
 }

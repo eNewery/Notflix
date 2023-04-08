@@ -22,6 +22,7 @@ export default function MovieCard({data}){
   context.datosFav.length === 0 ? context.setDatosFav([obj]) : context.setDatosFav([...context.datosFav, obj]);
   const temp = JSON.stringify(obj)
   localStorage.setItem(data.id, temp)
+  window.location.reload()
   }
 
     function setOffFavourite(){
@@ -30,6 +31,8 @@ export default function MovieCard({data}){
       localStorage.removeItem(data.id)
       const filtered = context.datosFav.filter(item => item.data.id !== data.id);
       context.setDatosFav(filtered)
+  window.location.reload()
+
     }
 
   function handleShow(){

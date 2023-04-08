@@ -9,7 +9,11 @@ export default function ModalContent({data}){
 const [favourite, setFavourite] = useState(false)
 const [genre, setGenre] = useState();
 
+useEffect(() => {
+    const filtered = JSON.parse(localStorage.getItem(data.id));
+    filtered ? setFavourite(filtered.favourite) : console.log("No existe")
 
+}, [])
 useEffect(() => {
     const apiKey = 'd7214adc4b19c9daf7f6294b411d236d'; // Cambia esto con tu propia clave de API
 const language = 'es-ES'; // Cambia esto con el idioma en el que deseas recibir la información
@@ -29,7 +33,28 @@ const genreIds = data.genre_ids; // Cambia esto con el nombre de la propiedad qu
       console.error(error);
     });
 }, [data])
+console.log(context.datosFav)
+function setOnFavourite(){
 
+    setFavourite(true)
+    const obj = {
+      favourite: true,
+      data: data
+    }
+    context.datosFav.length === 0 ? context.setDatosFav([obj]) : context.setDatosFav([...context.datosFav, obj]);
+    const temp = JSON.stringify(obj)
+    localStorage.setItem(data.id, temp);
+    window.location.reload();
+    }
+      function setOffFavourite(){
+        setFavourite(false)
+        
+        localStorage.removeItem(data.id)
+        const filtered = context.datosFav.filter(item => item.data.id !== data.id);
+        context.setDatosFav(filtered)
+  window.location.reload()
+
+      }
 const background = {
     background1: {
     background: `url(https://image.tmdb.org/t/p/w300${data.poster_path})`,
@@ -38,6 +63,7 @@ const background = {
     backgroundSize: "cover",
 
 }
+
 }
 return <section style={background.background1} class="movie-details">
 
@@ -46,27 +72,27 @@ return <section style={background.background1} class="movie-details">
 <h1>{data.title}</h1>
     <p class="movie-genres">
         <strong>Genres:</strong>
-  {genre ? genre.map(item => (<span>{item}</span>)) : <p>Sin géneros</p>}
+  {genre ? genre.map(item => (<span className="genre-item">{item}</span>)) : <p>Sin géneros</p>}
     </p>
     <p class="movie-overview">{data.overview}</p>
     <div class="movie-metadata">
         <p class="movie-rating">
             <strong>Rating: </strong>
-            {data.vote_average}/10 {data.vote_count} votes
+            {data.vote_average}/10 - {data.vote_count} votes
         </p>
         <p class="movie-release-date">
             <strong>Release Date: </strong>
             {data.release_date}
         </p>
-        <p class="movie-runtime">
-            <strong>Runtime: </strong>
-            {data.runtime} minutes
-        </p>
-        <p class="movie-status">
-            <strong>Status: </strong>
-            {data.status}
-        </p>
+
+
     </div>
+    <p class="movie-adults">
+            <strong></strong>
+            {data.adults === true ? <span>+18</span> : <span>Para todas las edades</span>}
+        </p>
 </div>
+{favourite === false ? <img onClick={() => setOnFavourite()} className="favOff" src={favOff} alt="" /> : <img onClick={() => setOffFavourite()} className="favOff" src={favOn} alt="" />
+}
 </section>
 }

@@ -9,6 +9,7 @@ const [modalData, setModalData] = useState([]);
     const [data, setData] = useState([])
     const [search, setSearch] = useState([]);
     const [categories, setCategories] = useState([])
+    const [categoryTitle, setCategoryTitle] = useState("")
     const [datosFav, setDatosFav] = useState([])
 const [count, setCount] = useState(1)
 
@@ -33,7 +34,7 @@ fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=d7214adc4b19c9daf7f
       .then(json=>setData(json))
 
   }, [count])
-return <MoviesContext.Provider value={{data, count, setCount, search, setSearch, categories, datosFav, setDatosFav, showModal, setShowModal, modalData, setModalData}}>
+return <MoviesContext.Provider value={{data, count, setCount, search, setSearch, categories, datosFav, setDatosFav, showModal, setShowModal, modalData, categoryTitle, setModalData, setCategoryTitle}}>
     {children}
 </MoviesContext.Provider>
 }
